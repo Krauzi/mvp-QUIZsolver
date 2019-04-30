@@ -34,8 +34,12 @@ namespace QUIZsolver
             //}
             FilePath = @"H:\C#\QUIZsolver\Quizes\ExampleQuiz.json";
             Time = 2;
+            SelectedQuestionIndex = 0;
             if (LoadQuiz != null)
                 LoadQuiz(FilePath);
+            if (GetQuestion != null)
+                GetQuestion(SelectedQuestionIndex);
+
         }
 
         public Form1()
@@ -45,8 +49,46 @@ namespace QUIZsolver
             this.MaximizeBox = false;
 
         }
+
+        public string QuestionText
+        {
+            get
+            {
+                return labelQuestion.Text;
+            }
+            set
+            {
+                labelQuestion.Text = value;
+            }
+        }
+
+        public int QuestionNumber
+        {
+            get
+            {
+                return int.Parse(labelQuestionNumber.Text);
+            }
+            set
+            {
+                labelQuestionNumber.Text = value.ToString();
+            }
+        }
+
         public List<Tuple<string, bool>> Answers
         {
+            get
+            {
+                List<Tuple<string, bool>> answers = new List<Tuple<string, bool>>();
+                foreach (AnswerObject obj in flowLayoutPanelAnswers.Controls)
+                {
+                    if (obj.AnswerText != "")
+                    {
+                        Answer answer = new Answer(obj.AnswerText, obj.AnswerChecked);
+                        answers.Add(answer.GetAnswer());
+                    }
+                }
+                return answers;
+            }
             set
             {
                 flowLayoutPanelAnswers.Controls.Clear();
@@ -54,6 +96,7 @@ namespace QUIZsolver
                 {
                     AnswerObject answer = new AnswerObject();
                     answer.AnswerText = value[i].Item1;
+                    answer.AnswerChecked = value[i].Item2;
                     flowLayoutPanelAnswers.Controls.Add(answer);
                 }
             }
@@ -64,10 +107,13 @@ namespace QUIZsolver
             set
             {
                 flowLayoutPanelQuestions.Controls.Clear();
-                for (int i = 0; i < value.Count; i++)
+                for (int i = 1; i < value.Count + 1; i++)
                 {
                     Button question = new Button();
                     question.Text = i.ToString();
+                    question.Width = 32;
+                    question.Height = 32;
+                    question.Click += new EventHandler(this.Question_Click);
                     flowLayoutPanelQuestions.Controls.Add(question);
                 }
             }
@@ -85,6 +131,10 @@ namespace QUIZsolver
             }
         }
 
+
+        public int SelectedQuestionIndex { get; set; }
+
+
         public static string FilePath { get; set; }
         public static uint Time { get; set; }
         public static bool NegativePoints { get; set; }
@@ -95,14 +145,25 @@ namespace QUIZsolver
         }
 
         #region EventHandlers
+        public event Action<int> GiveAnswer;
         public event Action<string> LoadQuiz;
         public event Action<int> GetQuestion;
         #endregion
 
         #region Events
-        private void button1_Click(object sender, EventArgs e)
+        private void Question_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(FilePath + Time + NegativePoints);
+            Console.WriteLine(SelectedQuestionIndex);
+            Button btn = (Button)sender;
+            if (GiveAnswer != null)
+            {
+                GiveAnswer(SelectedQuestionIndex);
+                SelectedQuestionIndex = int.Parse(btn.Text) - 1;
+                if (GetQuestion != null)
+                {
+                    GetQuestion(SelectedQuestionIndex);
+                }
+            }
         }
 
         private void buttonFinish_Click(object sender, EventArgs e)
