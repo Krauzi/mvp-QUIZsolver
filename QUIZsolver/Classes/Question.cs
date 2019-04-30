@@ -27,6 +27,15 @@ namespace QUIZsolver.Classes
             }
         }
 
+        public void Update(List<Tuple<string, bool>> Answers)
+        {
+            this.Answers = new List<Answer>();
+            foreach (var item in Answers)
+            {
+                this.Answers.Add(new Answer(item.Item1, item.Item2));
+            }
+        }
+
         //public override string ToString()
         //{
         //    return string.Format("{0};{1}", this.QuestionText, this.QuestionPoints);

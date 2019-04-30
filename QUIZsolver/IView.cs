@@ -8,12 +8,18 @@ namespace QUIZsolver
 {
     interface IView
     {
-        List<Tuple<string, bool>> Answers { set; }
+        string QuestionText { get; set; }
+        int QuestionNumber { get; set; }
+        uint Points { get; set; }
+        List<Tuple<string, bool>> Answers { get;  set; }
         List<Tuple<string, uint, List<Tuple<string, bool>>>> Questions { set; }
+
 
         void ShowMessage(string MessageText);
 
         event Action<string> LoadQuiz;
+        event Action<int> GiveAnswer;
+        event Action<int> GetQuestion;
 
     }
 }
