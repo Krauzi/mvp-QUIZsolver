@@ -34,6 +34,11 @@ namespace QUIZsolver.Classes
             {
                 this.Answers.Add(new Answer(item.Item1, item.Item2));
             }
+            Console.WriteLine("---------------");
+            foreach (var answer in this.Answers)
+            {
+                Console.WriteLine($"Answers list: {answer}");
+            }
         }
 
         //public override string ToString()

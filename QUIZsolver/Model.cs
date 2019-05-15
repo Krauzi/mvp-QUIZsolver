@@ -54,7 +54,7 @@ namespace QUIZsolver
                     try
                     {
                         _quizInstance = new JavaScriptSerializer().Deserialize<QuizQuestions>(inputJson);
-                        _quizLoad = _quizInstance;
+                        _quizLoad = new JavaScriptSerializer().Deserialize<QuizQuestions>(inputJson);
                         ClearAnswers(_quizInstance);
                     }
                     catch (Exception)
@@ -70,7 +70,7 @@ namespace QUIZsolver
                 TextReader reader = new StreamReader(Path.Combine(fileName));
                 object obj = deserializer.Deserialize(reader);
                 _quizInstance = (QuizQuestions)obj;
-                _quizLoad = _quizInstance;
+                _quizLoad = (QuizQuestions)obj;
                 ClearAnswers(_quizInstance);
                 reader.Close();
             }
@@ -83,6 +83,33 @@ namespace QUIZsolver
                 for (int j = 0; j < quizInstance.Questions[i].Answers.Count; j++)
                     quizInstance.Questions[i].Answers[j].IsCorrect = false;
             }
+        }
+
+        public void DisplayScore()
+        {
+            uint points = 0;
+
+            Console.WriteLine($"Przed dodaniem do instancji [load, instancja]: [{_quizLoad.TotalPoints}, {_quizInstance.TotalPoints}]");
+            _quizInstance.TotalPoints += 5;
+            Console.WriteLine($"Po dodaniu do instancji [load, instancja]: [{_quizLoad.TotalPoints}, {_quizInstance.TotalPoints}]");
+
+            for (int i = 0; i < _quizInstance.Questions.Count; i++)
+            {
+                //Console.WriteLine($"Question {i}");
+                for(int j = 0; j < _quizInstance.Questions[i].Answers.Count; j++)
+                {
+                    if(_quizInstance.Questions[i].Answers[j].IsCorrect == _quizLoad.Questions[i].Answers[j].IsCorrect && _quizLoad.Questions[i].Answers[j].IsCorrect)
+                    {
+                        Console.WriteLine($"\tLoad : {_quizLoad.Questions[i].Answers[j].IsCorrect} <===> {_quizInstance.Questions[i].Answers[j].IsCorrect} : Instance");
+                        points += _quizLoad.Questions[i].QuestionPoints;
+                    }
+                }
+            }
+
+            Console.WriteLine(points);
+
+            Form3 score = new Form3(points);
+            score.Show();
         }
     }
 }

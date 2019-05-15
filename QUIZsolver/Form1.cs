@@ -32,8 +32,8 @@ namespace QUIZsolver
             //    if (LoadQuiz != null)
             //        LoadQuiz(FilePath);
             //}
-            FilePath = @"H:\C#\QUIZsolver\Quizes\ExampleQuiz.json";
-            Time = 2;
+            FilePath = @"C:\Users\Dawid\Desktop\semestr 4\programowanie obiektowe i graficzne\mvp-QUIZsolver\Quizes\ExampleQuiz.json";
+            //Time = 2; poki co czas ustawiony na sztywno w prop.
             SelectedQuestionIndex = 0;
             if (LoadQuiz != null)
                 LoadQuiz(FilePath);
@@ -147,10 +147,21 @@ namespace QUIZsolver
 
         public int SelectedQuestionIndex { get; set; }
 
-
         public static string FilePath { get; set; }
-        public static uint Time { get; set; }
+        public uint Time
+        {
+            get
+            {
+                return uint.Parse(labelTime.Text);   
+            }
+            set
+            {
+                labelTime.Text = value.ToString();
+            }
+
+        }
         public static bool NegativePoints { get; set; }
+
 
         public void ShowMessage(string MessageText)
         {
@@ -161,12 +172,15 @@ namespace QUIZsolver
         public event Action<int> GiveAnswer;
         public event Action<string> LoadQuiz;
         public event Action<int> GetQuestion;
+        public event Action TimerTick;
+        public event Action TimeOver;
         #endregion
 
         #region Events
         private void Question_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(SelectedQuestionIndex);
+            // drukowanie indeksu pytania
+            //Console.WriteLine(SelectedQuestionIndex);
             Button btn = (Button)sender;
             if (GiveAnswer != null)
             {
@@ -181,9 +195,14 @@ namespace QUIZsolver
 
         private void buttonFinish_Click(object sender, EventArgs e)
         {
-
+            TimeOver?.Invoke();
         }
 
         #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimerTick?.Invoke();
+        }
     }
 }

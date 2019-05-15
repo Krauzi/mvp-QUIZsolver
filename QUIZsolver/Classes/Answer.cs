@@ -19,14 +19,14 @@ namespace QUIZsolver.Classes
             this.IsCorrect = IsCorrect;
         }
 
-        //public override string ToString()
-        //{
-        //    return string.Format("{0};{1}", this.AnswerText, this.IsCorrect);
-        //}
-
         public Tuple<string, bool> GetAnswer()
         {
             return new Tuple<string, bool>(AnswerText, IsCorrect);
+        }
+
+        public override string ToString()
+        {
+            return $"{AnswerText} : { IsCorrect}";
         }
     }
 }

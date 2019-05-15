@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QUIZsolver
 {
@@ -18,6 +19,24 @@ namespace QUIZsolver
             this.view.LoadQuiz += View_LoadQuiz;
             this.view.GetQuestion += View_GetQuestion;
             this.view.GiveAnswer += View_GiveAnswer;
+            this.view.TimerTick += View_TimerTick;
+            this.view.TimeOver += View_TimeOver;
+        }
+
+        private void View_TimeOver()
+        {
+            MessageBox.Show("Koniec testu! Czas upłynął lub ręcznie zakończyłeś test");
+            model.DisplayScore();
+        }
+
+        private void View_TimerTick()
+        {
+            view.Time -= 1;
+            if(view.Time == 0)
+            {
+                // dodanie zatrzymania timera - dod. propert. przechowującego timer1.enabled?
+                View_TimeOver();
+            }
         }
 
         private void View_LoadQuiz(string fileName)
@@ -44,10 +63,11 @@ namespace QUIZsolver
         private void View_GiveAnswer(int givenQuestionIndex)
         {
             model.GiveAnswer(givenQuestionIndex, this.view.Answers);
-            for (int i = 0; i < this.view.Answers.Count; i++)
-            {
-                Console.WriteLine(this.view.Answers[i].Item2);
-            }
+
+            //for (int i = 0; i < this.view.Answers.Count; i++)
+            //{
+            //    Console.WriteLine(this.view.Answers[i].Item2);
+            //}
             this.view.Questions = model.GetQuestions;
         }
     }
