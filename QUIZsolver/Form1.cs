@@ -15,31 +15,32 @@ namespace QUIZsolver
     {
         private void onLoad(object sender, EventArgs e)
         {
-            //Form2 frm = new Form2();
-            //frm.FilePath = "";
-            //frm.Time = 0;
-            //frm.ShowDialog();
+            Form2 frm = new Form2();
+            frm.FilePath = "";
+            frm.Time = 0;
+            frm.ShowDialog();
 
-            //if (frm.FilePath == "" || frm.Time == 0)
-            //{
-            //    MessageBox.Show("No quiz time or file specified");
-            //    this.Close();
-            //    Application.Exit();
-            //    return;
-            //} else
-            //{ 
+            if (frm.FilePath == "" || frm.Time == 0)
+            {
+                MessageBox.Show("No quiz time or file specified");
+                this.Close();
+                Application.Exit();
+                return;
+            }
+            else
+            {
 
-            //    if (LoadQuiz != null)
-            //        LoadQuiz(FilePath);
-            //}
-            FilePath = @"C:\Users\Dawid\Desktop\semestr 4\programowanie obiektowe i graficzne\mvp-QUIZsolver\Quizes\ExampleQuiz.json";
+                if (LoadQuiz != null)
+                    LoadQuiz(FilePath);
+
+                Time = frm.Time * 60;
+                timer1.Enabled = true;
+                SelectedQuestionIndex = 0;
+                if (GetQuestion != null)
+                    GetQuestion(SelectedQuestionIndex);
+            }
+            //FilePath = @"C:\Users\Dawid\Desktop\semestr 4\programowanie obiektowe i graficzne\mvp-QUIZsolver\Quizes\ExampleQuiz.json";
             //Time = 2; poki co czas ustawiony na sztywno w prop.
-            SelectedQuestionIndex = 0;
-            if (LoadQuiz != null)
-                LoadQuiz(FilePath);
-            if (GetQuestion != null)
-                GetQuestion(SelectedQuestionIndex);
-
         }
 
         public Form1()
@@ -140,6 +141,7 @@ namespace QUIZsolver
             }
             set
             {
+                Console.WriteLine(value);
                 labelPoints.Text = value.ToString();
             }
         }
@@ -202,7 +204,15 @@ namespace QUIZsolver
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            TimerTick?.Invoke();
+            if (Time == 0)
+            {
+                TimeOver?.Invoke();
+                timer1.Enabled = false;
+            }
+            else
+            {
+                TimerTick?.Invoke();
+            }
         }
     }
 }

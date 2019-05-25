@@ -27,16 +27,12 @@ namespace QUIZsolver
         {
             MessageBox.Show("Koniec testu! Czas upłynął lub ręcznie zakończyłeś test");
             model.DisplayScore();
+            //view.Time = 0;
         }
 
         private void View_TimerTick()
         {
-            view.Time -= 1;
-            if(view.Time == 0)
-            {
-                // dodanie zatrzymania timera - dod. propert. przechowującego timer1.enabled?
-                View_TimeOver();
-            }
+                view.Time -= 1;
         }
 
         private void View_LoadQuiz(string fileName)

@@ -44,7 +44,7 @@
             // flowLayoutPanelAnswers
             // 
             this.flowLayoutPanelAnswers.Location = new System.Drawing.Point(16, 150);
-            this.flowLayoutPanelAnswers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanelAnswers.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelAnswers.Name = "flowLayoutPanelAnswers";
             this.flowLayoutPanelAnswers.Size = new System.Drawing.Size(600, 313);
             this.flowLayoutPanelAnswers.TabIndex = 0;
@@ -52,7 +52,7 @@
             // flowLayoutPanelQuestions
             // 
             this.flowLayoutPanelQuestions.Location = new System.Drawing.Point(16, 2);
-            this.flowLayoutPanelQuestions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanelQuestions.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelQuestions.Name = "flowLayoutPanelQuestions";
             this.flowLayoutPanelQuestions.Size = new System.Drawing.Size(907, 97);
             this.flowLayoutPanelQuestions.TabIndex = 1;
@@ -71,7 +71,7 @@
             // buttonFinish
             // 
             this.buttonFinish.Location = new System.Drawing.Point(815, 423);
-            this.buttonFinish.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonFinish.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFinish.Name = "buttonFinish";
             this.buttonFinish.Size = new System.Drawing.Size(108, 39);
             this.buttonFinish.TabIndex = 3;
@@ -121,7 +121,6 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -131,9 +130,9 @@
             this.labelTime.Location = new System.Drawing.Point(783, 302);
             this.labelTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(24, 17);
+            this.labelTime.Size = new System.Drawing.Size(16, 17);
             this.labelTime.TabIndex = 8;
-            this.labelTime.Text = "30";
+            this.labelTime.Text = "0";
             // 
             // Form1
             // 
@@ -149,7 +148,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanelQuestions);
             this.Controls.Add(this.flowLayoutPanelAnswers);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.onLoad);
