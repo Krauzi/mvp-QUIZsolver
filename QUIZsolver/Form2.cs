@@ -79,7 +79,6 @@ namespace QUIZsolver
             {
                 Form1.FilePath = FilePath;
                 Form1.NegativePoints = NegativePoints;
-                //Form1.Time = Time;
                 this.Close();
             }
         }

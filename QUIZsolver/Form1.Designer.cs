@@ -43,80 +43,78 @@
             // 
             // flowLayoutPanelAnswers
             // 
-            this.flowLayoutPanelAnswers.Location = new System.Drawing.Point(16, 150);
-            this.flowLayoutPanelAnswers.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanelAnswers.Location = new System.Drawing.Point(12, 122);
             this.flowLayoutPanelAnswers.Name = "flowLayoutPanelAnswers";
-            this.flowLayoutPanelAnswers.Size = new System.Drawing.Size(600, 313);
+            this.flowLayoutPanelAnswers.Size = new System.Drawing.Size(450, 254);
             this.flowLayoutPanelAnswers.TabIndex = 0;
             // 
             // flowLayoutPanelQuestions
             // 
-            this.flowLayoutPanelQuestions.Location = new System.Drawing.Point(16, 2);
-            this.flowLayoutPanelQuestions.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanelQuestions.Location = new System.Drawing.Point(12, 2);
             this.flowLayoutPanelQuestions.Name = "flowLayoutPanelQuestions";
-            this.flowLayoutPanelQuestions.Size = new System.Drawing.Size(907, 97);
+            this.flowLayoutPanelQuestions.Size = new System.Drawing.Size(680, 79);
             this.flowLayoutPanelQuestions.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(677, 295);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(508, 240);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 25);
+            this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Time left:";
             // 
             // buttonFinish
             // 
-            this.buttonFinish.Location = new System.Drawing.Point(815, 423);
-            this.buttonFinish.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonFinish.BackColor = System.Drawing.Color.DarkCyan;
+            this.buttonFinish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFinish.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonFinish.ForeColor = System.Drawing.Color.White;
+            this.buttonFinish.Location = new System.Drawing.Point(611, 344);
             this.buttonFinish.Name = "buttonFinish";
-            this.buttonFinish.Size = new System.Drawing.Size(108, 39);
+            this.buttonFinish.Size = new System.Drawing.Size(81, 32);
             this.buttonFinish.TabIndex = 3;
             this.buttonFinish.Text = "Finish";
-            this.buttonFinish.UseVisualStyleBackColor = true;
+            this.buttonFinish.UseVisualStyleBackColor = false;
             this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
             // 
             // labelQuestion
             // 
             this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelQuestion.Location = new System.Drawing.Point(69, 103);
-            this.labelQuestion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelQuestion.Location = new System.Drawing.Point(52, 84);
             this.labelQuestion.Name = "labelQuestion";
-            this.labelQuestion.Size = new System.Drawing.Size(541, 42);
+            this.labelQuestion.Size = new System.Drawing.Size(406, 34);
             this.labelQuestion.TabIndex = 4;
             this.labelQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelQuestionNumber
             // 
+            this.labelQuestionNumber.BackColor = System.Drawing.Color.Chocolate;
             this.labelQuestionNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelQuestionNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelQuestionNumber.Location = new System.Drawing.Point(16, 103);
-            this.labelQuestionNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelQuestionNumber.Location = new System.Drawing.Point(12, 84);
             this.labelQuestionNumber.Name = "labelQuestionNumber";
-            this.labelQuestionNumber.Size = new System.Drawing.Size(45, 41);
+            this.labelQuestionNumber.Size = new System.Drawing.Size(34, 34);
             this.labelQuestionNumber.TabIndex = 5;
             this.labelQuestionNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelWorth
             // 
             this.labelWorth.AutoSize = true;
-            this.labelWorth.Location = new System.Drawing.Point(679, 135);
-            this.labelWorth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelWorth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelWorth.Location = new System.Drawing.Point(509, 122);
             this.labelWorth.Name = "labelWorth";
-            this.labelWorth.Size = new System.Drawing.Size(107, 17);
+            this.labelWorth.Size = new System.Drawing.Size(98, 16);
             this.labelWorth.TabIndex = 6;
             this.labelWorth.Text = "Question worth:";
             // 
             // labelPoints
             // 
             this.labelPoints.AutoSize = true;
-            this.labelPoints.Location = new System.Drawing.Point(795, 135);
-            this.labelPoints.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPoints.Location = new System.Drawing.Point(608, 124);
             this.labelPoints.Name = "labelPoints";
-            this.labelPoints.Size = new System.Drawing.Size(0, 17);
+            this.labelPoints.Size = new System.Drawing.Size(0, 13);
             this.labelPoints.TabIndex = 7;
             // 
             // timer1
@@ -127,18 +125,19 @@
             // labelTime
             // 
             this.labelTime.AutoSize = true;
-            this.labelTime.Location = new System.Drawing.Point(783, 302);
-            this.labelTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelTime.Location = new System.Drawing.Point(590, 240);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(16, 17);
+            this.labelTime.Size = new System.Drawing.Size(18, 20);
             this.labelTime.TabIndex = 8;
             this.labelTime.Text = "0";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(937, 478);
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.ClientSize = new System.Drawing.Size(703, 388);
             this.Controls.Add(this.labelTime);
             this.Controls.Add(this.labelPoints);
             this.Controls.Add(this.labelWorth);
@@ -148,7 +147,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanelQuestions);
             this.Controls.Add(this.flowLayoutPanelAnswers);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.onLoad);

@@ -48,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.labelPoints);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Result";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

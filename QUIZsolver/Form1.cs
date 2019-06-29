@@ -35,12 +35,11 @@ namespace QUIZsolver
 
                 Time = frm.Time * 60;
                 timer1.Enabled = true;
+                testLasts = true;
                 SelectedQuestionIndex = 0;
                 if (GetQuestion != null)
                     GetQuestion(SelectedQuestionIndex);
             }
-            //FilePath = @"C:\Users\Dawid\Desktop\semestr 4\programowanie obiektowe i graficzne\mvp-QUIZsolver\Quizes\ExampleQuiz.json";
-            //Time = 2; poki co czas ustawiony na sztywno w prop.
         }
 
         public Form1()
@@ -108,12 +107,14 @@ namespace QUIZsolver
             set
             {
                 flowLayoutPanelQuestions.Controls.Clear();
+                lastQuestionIndex = value.Count - 1;
                 for (int i = 1; i < value.Count + 1; i++)
                 {
                     Button question = new Button();
                     question.Text = i.ToString();
-                    question.Width = 28;
-                    question.Height = 28;
+                    question.Width = 30;
+                    question.Height = 30;
+                    question.FlatStyle = FlatStyle.Flat;
 
                     bool hasAnswer = false;
                     for (int j = 0; j < value[i - 1].Item3.Count; j++)
@@ -148,6 +149,8 @@ namespace QUIZsolver
 
 
         public int SelectedQuestionIndex { get; set; }
+        public bool testLasts { get; set; }
+        public int lastQuestionIndex { get; set; }
 
         public static string FilePath { get; set; }
         public uint Time
@@ -181,8 +184,6 @@ namespace QUIZsolver
         #region Events
         private void Question_Click(object sender, EventArgs e)
         {
-            // drukowanie indeksu pytania
-            //Console.WriteLine(SelectedQuestionIndex);
             Button btn = (Button)sender;
             if (GiveAnswer != null)
             {
@@ -197,6 +198,7 @@ namespace QUIZsolver
 
         private void buttonFinish_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
             TimeOver?.Invoke();
         }
 
@@ -204,14 +206,12 @@ namespace QUIZsolver
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (Time == 0)
-            {
-                TimeOver?.Invoke();
-                timer1.Enabled = false;
-            }
+            if (Time > 0)
+                TimerTick?.Invoke();
             else
             {
-                TimerTick?.Invoke();
+                timer1.Enabled = false;
+                TimeOver?.Invoke();
             }
         }
     }

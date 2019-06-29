@@ -15,6 +15,8 @@ namespace QUIZsolver
         List<Tuple<string, bool>> Answers { get;  set; }
         List<Tuple<string, uint, List<Tuple<string, bool>>>> Questions { set; }
 
+        bool testLasts { get; set; }
+        int lastQuestionIndex { get; set; }
 
         void ShowMessage(string MessageText);
 

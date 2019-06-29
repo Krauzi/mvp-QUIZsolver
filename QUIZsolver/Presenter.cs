@@ -25,9 +25,10 @@ namespace QUIZsolver
 
         private void View_TimeOver()
         {
+            this.view.testLasts = false;
+            View_GiveAnswer(this.view.lastQuestionIndex);
             MessageBox.Show("Koniec testu! Czas upłynął lub ręcznie zakończyłeś test");
             model.DisplayScore();
-            //view.Time = 0;
         }
 
         private void View_TimerTick()
